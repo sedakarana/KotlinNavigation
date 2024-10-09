@@ -30,12 +30,9 @@ class FirstFragment : Fragment() {
 
         first_fragment_button.setOnClickListener {
             val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment("Seda")
-            //action.age = 5
             Navigation.findNavController(it).navigate(action)
         }
 
     }
-
-
 
 }
