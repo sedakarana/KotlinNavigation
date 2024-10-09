@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    namespace 'com.sedakarana.navigationkotlin' // Replace with your actual package name
+
+    compileSdkVersion 34 // Update to the latest stable SDK version
+    defaultConfig {
+        applicationId "com.sedakarana.navigationkotlin" // Replace with your actual application ID
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17 // Set to 17
+        targetCompatibility JavaVersion.VERSION_17 // Set to 17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17" // Set Kotlin JVM target to 17
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += [
+                '--add-opens', 'java.base/java.io=ALL-UNNAMED'
+        ]
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+}
+
+
+
+def nav_version = "2.8.2"
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+
+
+
+
+
+}
